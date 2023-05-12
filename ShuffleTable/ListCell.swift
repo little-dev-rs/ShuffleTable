@@ -29,14 +29,17 @@ class ListCell: UITableViewCell {
 
     private func setupSubviews() {
         contentView.addSubview(numberLabel)
-        numberLabel.widthToSuperview(multiplier: 0.8)
-        numberLabel.centerXToSuperview()
+        numberLabel.widthToSuperview(multiplier: 0.5)
+        numberLabel.leadingToSuperview(offset: 50)
         numberLabel.height(20)
         numberLabel.centerYToSuperview()
     }
 
-    func configureCell(with text: String) {
-        numberLabel.text = text
+    func configureCell(with model: ListCellModel) {
+        numberLabel.text = model.title
+        if model.isChecked {
+            accessoryType = .checkmark
+        }
     }
     
 }
