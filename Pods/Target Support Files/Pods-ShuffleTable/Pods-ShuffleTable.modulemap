@@ -1,0 +1,6 @@
+framework module Pods_ShuffleTable {
+  umbrella header "Pods-ShuffleTable-umbrella.h"
+
+  export *
+  module * { export * }
+}
