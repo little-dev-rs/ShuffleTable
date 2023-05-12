@@ -74,12 +74,12 @@ extension ViewController: UITableViewDelegate {
         }
     }
     
-    func removeItem(at indexPath: IndexPath) {
+    private func removeItem(at indexPath: IndexPath) {
         items.remove(at: indexPath.row) // remove the item from your data source
         tableView.deleteRows(at: [indexPath], with: .fade) // delete the row from the table view
     }
     
-    func addItem(_ item: CellModel) {
+    private func addItem(_ item: ListCellModel) {
         items.insert(item, at: 0) // add the item to your data source
         let indexPath = IndexPath(row: 0, section: 0) // create an index path for the new row
         tableView.insertRows(at: [indexPath], with: .automatic) // insert the new row into the table view

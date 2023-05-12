@@ -16,6 +16,12 @@ class ListCell: UITableViewCell {
         label.textAlignment = .left
         return label
     }()
+    
+    var checkMarkImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "checkmark") ?? UIImage()
+        return imageView
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,13 +39,17 @@ class ListCell: UITableViewCell {
         numberLabel.leadingToSuperview(offset: 50)
         numberLabel.height(20)
         numberLabel.centerYToSuperview()
+        
+        contentView.addSubview(checkMarkImage)
+        checkMarkImage.width(20)
+        checkMarkImage.height(20)
+        checkMarkImage.trailingToSuperview(offset: 20)
+        checkMarkImage.centerYToSuperview()
     }
 
     func configureCell(with model: ListCellModel) {
         numberLabel.text = model.title
-        if model.isChecked {
-            accessoryType = .checkmark
-        }
+        checkMarkImage.isHidden = !model.isChecked
     }
     
 }
